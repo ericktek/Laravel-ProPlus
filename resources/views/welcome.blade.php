@@ -4,6 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Most of the retail financial markets traders spending a time finding for
+    the best strategies which will make them to be the best traders of financial markets but
+    their strategies didn't work, Struggling to get someone to support and mentor them to the
+    dreams of becoming like other pro traders in financial markets, instead they are taught to
+    drive a car without a side mirrors, mmmhh is it possible?? Actually No!.">
+
 
     <title>{{ config('app.name', 'Proplus.net') }}</title>
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
