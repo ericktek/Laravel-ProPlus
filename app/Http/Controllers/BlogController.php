@@ -8,9 +8,9 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 // Use the Post Model
 use App\Models\Post;
-// We will use Form Request to validate incoming requests from our store and update method
-use App\Http\Requests\Post\StoreRequest;
-use App\Http\Requests\Post\UpdateRequest;
+use App\Models\Contact;
+
+
 
 class BlogController extends Controller
 {
@@ -19,16 +19,41 @@ class BlogController extends Controller
      */
     public function index()
     {
-        // $posts = Post::latest()->take(3)->get();
-        // return response()->view('welcome', [
-        //     'posts' => $posts,
-        // ]);
-
         $posts = post::latest()->paginate(3);
 
         return view('welcome', compact('posts'))->with('i', (request()->input('page', 1) - 1) * 3);
 
     }
+
+    public function product()
+    {
+
+    $posts = post::latest()->get();
+
+         return view('product', ['posts' => $posts]);
+     }
+
+    public function contact()
+    {
+        return view('contactForm');
+    }
+
+     public function store(Request $request)
+    {
+
+        $request->validate([
+            'full_name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|digits:10|numeric',
+            'message' => 'required'
+        ]);
+
+        Contact::create($request->all());
+
+
+        return redirect()->back()
+                         ->with(['success' => 'Thank you for contact us. we will contact you shortly.']);
+        }
 
 }
 
